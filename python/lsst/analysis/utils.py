@@ -341,7 +341,7 @@ def makeMapperInfo(butler):
     if not butler:
         return None
 
-    mapper = butler._getDefaultMapper()
+    mapper = butler._getDefaultMapper([])
     
     class MapperInfo(object):
         @staticmethod
@@ -1017,7 +1017,8 @@ def makeMapperInfo(butler):
                 return filterName, tract, patch, objId
 
     #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
+    from lsst.obs.hsc import HscMapper
+    mapper = HscMapper
     if mapper == LsstSimMapper:
         return LsstSimMapperInfo(LsstSimMapper)
     elif mapper == SdssMapper:
